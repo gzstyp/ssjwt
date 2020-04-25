@@ -1,5 +1,6 @@
 package com.fwtai.config;
 
+import com.fwtai.filters.JwtRequestFilter;
 import com.fwtai.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -8,8 +9,10 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @作者 田应平
@@ -25,6 +28,9 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
     @Autowired
     private MyUserDetailsService myUserDetailsService;
 
+    @Autowired
+    private JwtRequestFilter jwtRequestFilter;
+
     // 自定义验证方式
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception{
@@ -34,7 +40,11 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.cors().disable().authorizeRequests().antMatchers("/authenticate").permitAll()
-          .anyRequest().authenticated();
+          .anyRequest().authenticated()
+          .and()
+          .sessionManagement()
+          .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.addFilterBefore(jwtRequestFilter,UsernamePasswordAuthenticationFilter.class);//之前处理
     }
 
     @Override
