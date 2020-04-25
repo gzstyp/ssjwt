@@ -54,6 +54,6 @@ public class JwtRequestFilter extends OncePerRequestFilter{
                 securityContext.setAuthentication(usernameToken);
             }
         }
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request,response);//继续下一个过滤器
     }
 }
