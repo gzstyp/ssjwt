@@ -46,6 +46,7 @@ public class HelloController{
         return "hello world";
     }
 
+    //若提供的用户名和密码都正确的话,则可以访问本接口,否则或报错'账号或密码错误'
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(final @RequestBody AuthenticationRequest authenticationRequest) throws Exception{
         try {
