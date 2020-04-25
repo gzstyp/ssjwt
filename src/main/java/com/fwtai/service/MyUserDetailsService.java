@@ -33,7 +33,7 @@ public class MyUserDetailsService implements UserDetailsService{
      */
 
 
-    //在实际项目中应该是中数据库里获取数据,此处的用户名和密码是写死的
+    //在实际项目中应该是中数据库里获取数据,此处的用户名、密码和权限是写死的
     @Override
     public UserDetails loadUserByUsername(final String userName) throws UsernameNotFoundException{
         return new User("admin","123456",new ArrayList<>());//第3个参数是授权列表,可以在这里实现动态权限列表
