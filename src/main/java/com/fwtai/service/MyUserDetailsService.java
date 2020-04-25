@@ -18,6 +18,7 @@ import java.util.ArrayList;
  * @官网 http://www.fwtai.com
  * @参考1 https://blog.csdn.net/fyedu/article/details/94300733
  * @参考2 https://blog.csdn.net/weixin_39220472/article/details/80873268
+ * @参考3 https://blog.csdn.net/camellia919/article/details/81945806
 */
 @Service
 public class MyUserDetailsService implements UserDetailsService{

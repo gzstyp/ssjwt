@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -28,7 +27,6 @@ import javax.servlet.http.HttpServletResponse;
  * @官网 http://www.fwtai.com
 */
 @RestController
-@RequestMapping
 public class HelloController{
 
     @Resource
@@ -46,9 +44,10 @@ public class HelloController{
         return "hello world";
     }
 
+    // http://127.0.0.1:8020/authenticate
     //若提供的用户名和密码都正确的话,则可以访问本接口,否则或报错'账号或密码错误'
     @PostMapping("/authenticate")
-    public ResponseEntity<?> createAuthenticationToken(final @RequestBody AuthenticationRequest authenticationRequest) throws Exception{
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
         try {
             manager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),authenticationRequest.getPassword()));
         } catch (final BadCredentialsException e){
