@@ -15,8 +15,7 @@ public final class AuthenticationRequest implements Serializable{
     private String username;
     private String password;
 
-    public AuthenticationRequest(){
-    }
+    public AuthenticationRequest(){}
 
     public AuthenticationRequest(final String username,final String password){
         this.username = username;
