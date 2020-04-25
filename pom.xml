@@ -11,7 +11,12 @@
     <groupId>com.fwtai</groupId>
     <artifactId>ssjwt</artifactId>
     <version>v1.0.0</version>
-    <description>基于spring security构建项目</description>
+    <description>
+
+        基于spring security构建项目
+        参考: https://www.bilibili.com/video/BV1jz411b7cn
+
+    </description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
