@@ -32,7 +32,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
     }
 
     @Override
-    protected void configure(final HttpSecurity http) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception{
         http.cors().disable().authorizeRequests().antMatchers("/authenticate").permitAll()
           .anyRequest().authenticated();
     }
@@ -48,51 +48,4 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
     public PasswordEncoder passwordEncoder(){
         return NoOpPasswordEncoder.getInstance();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
