@@ -4,6 +4,7 @@ import com.fwtai.models.AuthenticationRequest;
 import com.fwtai.models.AuthenticationResponse;
 import com.fwtai.service.LoginAuthService;
 import com.fwtai.tool.ToolJwt;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -29,13 +29,13 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 public class ApiController{
 
-    @Resource
+    @Autowired
     private AuthenticationManager manager;
 
-    @Resource
+    @Autowired
     private LoginAuthService userDetailsService;
 
-    @Resource
+    @Autowired
     private ToolJwt toolJwt;
 
     // http://127.0.0.1:8020/hello
