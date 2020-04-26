@@ -5,7 +5,7 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ import java.util.function.Function;
  * @Email service@dwlai.com
  * @官网 http://www.fwtai.com
 */
-@Service
+@Component
 public class ToolJwt{
 
     private final String SECRET_KEY = "secret";
