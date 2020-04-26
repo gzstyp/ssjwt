@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
  * @官网 http://www.fwtai.com
 */
 @RestController
-public class HelloController{
+public class ApiController{
 
     @Resource
     private AuthenticationManager manager;
