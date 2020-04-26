@@ -1,6 +1,7 @@
 package com.fwtai.tool;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -47,16 +48,23 @@ public class ToolJwt{
         return extractExpiration(token).before(new Date());
     }
 
+    //注意这个claims是没有值的哦
     public String generateToken(final UserDetails userDetails){
         final Map<String,Object> claims = new HashMap<>();
-        return createToken(claims,userDetails.getUsername());
+        claims.put("roles",userDetails.getAuthorities());
+        return createToken(userDetails.getUsername(),claims);
     }
 
-    private String createToken(final Map<String,Object> claims,final String subject){
+    // setSubject 不能和s etClaims() 同时使用,如果用不到 userId() 的话可以把setId的值设为 userName !!!
+    private String createToken(final String subject,final Map<String,Object> claims){
         final long date = System.currentTimeMillis();
-        return Jwts.builder()
-          .setClaims(claims)
-          .setSubject(subject)
+        final JwtBuilder builder = Jwts.builder();
+        if(claims != null && claims.size() >0){
+            for(final String key : claims.keySet()){
+                builder.claim(key,claims.get(key));
+            }
+        }
+        return builder.setSubject(subject)
           .setIssuedAt(new Date(date))
           .setExpiration(new Date(date + 1000 * 60 * 60 * 10))
           .signWith(SignatureAlgorithm.HS256,SECRET_KEY)
