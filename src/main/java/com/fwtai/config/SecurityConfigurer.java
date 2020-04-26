@@ -1,7 +1,7 @@
 package com.fwtai.config;
 
 import com.fwtai.filters.JwtRequestFilter;
-import com.fwtai.service.MyUserDetailsService;
+import com.fwtai.service.LoginAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,7 +26,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 
     @Autowired
-    private MyUserDetailsService myUserDetailsService;
+    private LoginAuthService loginAuthService;
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
@@ -34,7 +34,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
     // 自定义验证方式
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(myUserDetailsService);
+        auth.userDetailsService(loginAuthService);
     }
 
     @Override

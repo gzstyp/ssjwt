@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * @参考3 https://blog.csdn.net/camellia919/article/details/81945806
 */
 @Service
-public class MyUserDetailsService implements UserDetailsService{
+public class LoginAuthService implements UserDetailsService{
 
     /*
         SecurityContextHolder作为全局缓存，从上下文获取授权信息

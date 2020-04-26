@@ -1,6 +1,6 @@
 package com.fwtai.filters;
 
-import com.fwtai.service.MyUserDetailsService;
+import com.fwtai.service.LoginAuthService;
 import com.fwtai.tool.ToolJwt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,7 +30,7 @@ import java.io.IOException;
 public class JwtRequestFilter extends OncePerRequestFilter{
 
     @Autowired
-    private MyUserDetailsService userDetailsService;
+    private LoginAuthService userDetailsService;
 
     @Autowired
     private ToolJwt toolJwt;

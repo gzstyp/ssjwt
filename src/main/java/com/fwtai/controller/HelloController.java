@@ -2,7 +2,7 @@ package com.fwtai.controller;
 
 import com.fwtai.models.AuthenticationRequest;
 import com.fwtai.models.AuthenticationResponse;
-import com.fwtai.service.MyUserDetailsService;
+import com.fwtai.service.LoginAuthService;
 import com.fwtai.tool.ToolJwt;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,7 +33,7 @@ public class HelloController{
     private AuthenticationManager manager;
 
     @Resource
-    private MyUserDetailsService userDetailsService;
+    private LoginAuthService userDetailsService;
 
     @Resource
     private ToolJwt toolJwt;
